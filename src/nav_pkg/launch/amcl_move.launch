@@ -1,0 +1,26 @@
+<launch>
+  <param name="/use_sim_time" value="false" />
+
+  <include file="$(find fdilink_ahrs)/launch/ahrs_data.launch" />
+  <include file="$(find rplidar_ros)/launch/rplidar_a3.launch" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_base_laser_link_broadcaster"
+      args="-0.2 0 -0.05 1.57 3.14 0 base_link base_laser_link" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_camera_link_broadcaster"
+    args="0.1 0 0.05 0 0.0 0 base_link imu_link" />
+
+  <arg name="map" default="gmapping1.yaml" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find map_pkg)/map/$(arg map)">
+  <param name="frame_id" value="map" />
+  
+  </node>
+
+
+    <!-- 启动AMCL节点 -->
+    <include file="$(find nav_pkg)/launch/amcl.launch" />
+    
+    <include file="$(find nav_pkg)/launch/move_base.launch" />
+
+</launch>

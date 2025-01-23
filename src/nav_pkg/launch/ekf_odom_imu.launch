@@ -1,0 +1,22 @@
+<launch>
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_link_camera_link_broadcaster"
+    args="0.1 0 0.05 0 0 3.14 base_link imu_link" />
+
+<include file="$(find fdilink_ahrs)/launch/ahrs_data.launch" />
+
+
+<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <param name="output_frame" value="odom"/>
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+    <param name="debug" value="false"/>
+    <param name="self_diagnose" value="false"/> 
+    <remap from="imu" to="imu" />
+    <remap from="odom" to= "odom"/>
+</node>
+
+</launch>

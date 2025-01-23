@@ -1,0 +1,4 @@
+<launch>
+   <node name="map_publish" pkg="map_server" type="map_server" args="$(find nav_pkg)/maps/map.yaml"/>
+
+</launch>

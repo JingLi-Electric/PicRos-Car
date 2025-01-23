@@ -1,0 +1,58 @@
+<launch>
+
+   <param name="use_sim_time" value="false" />
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find nav_pkg)/urdf/robot_ndt.urdf.xacro --inorder" />
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true">
+    </node>
+    
+
+    <!-- 地图 -->
+   <arg name="map" default="map_big.yaml" />
+      <node name="map_server" pkg="map_server" type="map_server" args="$(find nav_pkg)/maps/$(arg map)">
+      <param name="frame_id" value="map" />
+   </node>
+
+
+   <!--- Run AMCL --> 
+   <!-- <include file="$(find nav_pkg)/launch/amcl_diff.launch" /> -->
+
+   <!-- Run move_base node -->
+   <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" clear_params="true">
+        <param name="controller_frequency" value="10.0" />
+        <param name="controller_patiente" value="15.0" />
+        
+        <rosparam file="$(find nav_pkg)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find nav_pkg)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find nav_pkg)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find nav_pkg)/param/global_costmap_params.yaml" command="load" />
+        
+        <rosparam file="$(find nav_pkg)/param/base_local_planner_params.yaml" command="load" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" /> 
+        <param name="use_dijkstra" value="true"/>
+
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+        <rosparam file="$(find nav_pkg)/param/teb_local_planner_params.yaml" command="load" />
+
+
+    </node>  -->
+
+  <!-- 需要融合 -->
+  <!-- <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+      <param name="output_frame" value="odom"/>
+      <param name="base_footprint_frame" value="base_link"/>
+      <param name="freq" value="30.0"/>
+      <param name="sensor_timeout" value="1.0"/>
+      <param name="odom_used" value="true"/>
+      <param name="imu_used" value="true"/>
+      <param name="vo_used" value="false"/>
+      <param name="debug" value="false"/>
+      <param name="self_diagnose" value="false"/> 
+      <remap from="imu" to="imu" />
+      <remap from="odom" to= "odom"/>
+  </node> -->
+
+
+
+</launch>

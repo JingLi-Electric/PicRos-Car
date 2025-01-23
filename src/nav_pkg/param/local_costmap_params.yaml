@@ -1,0 +1,13 @@
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  static_map: false   #这里要使用激光雷达的地图
+  rolling_window: true
+  width: 3.0
+  height: 3.0
+  update_frequency: 5  # 一般和激光雷达的一样，before is 10
+  publish_frequency: 2
+  transform_tolerance: 1  
+
+
+  resolution: 0.05

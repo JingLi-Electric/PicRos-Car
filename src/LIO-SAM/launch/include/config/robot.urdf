@@ -1,0 +1,29 @@
+
+<robot name="yhs_car_3d">
+  <link name="base_link" />
+
+  <joint name="imu_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+    <origin xyz="0.6 -0.05 0.1" rpy="0 0 3.14" />
+  </joint>
+
+  <link name="odom" />
+  <joint name="odom_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="odom" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+
+  <joint name="rslidar_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="rslidar" />
+    <origin xyz="0.9 0 1.45" rpy="1.57 0 0" />
+  </joint>
+
+  <joint name="velodyne_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="velodyne" />
+    <origin xyz="0.9 0 1.45" rpy="1.57 0 0" />
+  </joint>
+
+</robot>

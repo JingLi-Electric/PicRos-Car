@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find fdilink_ahrs)/launch/ahrs_data.launch" />
+    <include file="$(find rslidar_sdk)/launch/start.launch" />
+    <!-- <include file="$(find nav_pkg)/launch/steering_yhs_robot.launch"/> -->
+    <include file="$(find rslidar_laserscan)/launch/rslidar_laserscan.launch"/>
+</launch>

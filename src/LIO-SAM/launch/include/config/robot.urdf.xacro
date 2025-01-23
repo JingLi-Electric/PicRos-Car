@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="lio" xmlns:xacro="http://tixiaoshan.github.io/">
+  <xacro:property name="PI" value="3.1415926535897931" />
+
+  <link name="base_link" />
+  <link name="imu_link" />
+  <joint name="imu_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="imu_link" />
+    <origin xyz="0.6 -0.05 0.1" rpy="0 0 3.14" />
+  </joint>
+
+  <link name="odom" />
+  <joint name="odom_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="odom" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint> <!-- 这是 missing 的闭合标签 -->
+  <link name="rslidar" />
+  <joint name="rslidar_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="rslidar" />
+    <origin xyz="0.9 0 1.45" rpy="0 0 0" />
+  </joint>
+  <link name="velodyne" />
+  <joint name="velodyne_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="velodyne" />
+    <origin xyz="0.9 0 1.45" rpy="0 0 0" />
+  </joint>
+
+</robot>

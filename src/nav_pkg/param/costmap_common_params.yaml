@@ -1,0 +1,23 @@
+  footprint: [[-1.4, -0.6], [-1.4, 0.6], [1.4, 0.6], [1.4, -0.6]] #其他形状
+  obstacle_range: 3  #更新以机器人为中心，按此数值为半径内的障碍物信息。
+  raytrace_range: 3  #更新以机器人为中心，按此数值为半径内的自由空间。
+
+  inflation_radius: 0.5 #设置代价地图膨胀半径。可以理解以机器人为中心膨胀半径为此数值内不能有障碍物出现。
+  cost_scaling_factor: 3.0
+
+  # map_type: costmap
+  observation_sources: scan scan_camera
+  scan: 
+    {
+      data_type: LaserScan, 
+      topic: rslidar_points, 
+      marking: true, 
+      clearing: true
+    }
+  scan_camera: 
+    {
+      data_type: PointCloud2, 
+      topic: rslidar_points, 
+      marking: true, 
+      clearing: true
+    }
