@@ -1,7 +1,3 @@
-Here’s the translated version of your README in English:
-
----
-
 # PicRos-Car Project Overview
 
 Welcome to PicRos-Car! This README provides an overview of the project, environment setup, system usage, and contributions.
@@ -25,10 +21,9 @@ The system utilizes an Ackermann chassis produced by [YuHeSen](https://www.yuhes
 7. [License](#license)
 
 ## Development Plan
-- [ ] 3D Mapping
-- [ ] Localization
-- [ ] Navigation
-- [ ] Add support for the Point-LIO localization algorithm.
+- [x] 3D Mapping
+- [x] Localization
+- [x] Navigation
 - [ ] Enhance obstacle avoidance in the navigation module.
 - [ ] Conduct testing and validation in diverse indoor and outdoor environments.
 
