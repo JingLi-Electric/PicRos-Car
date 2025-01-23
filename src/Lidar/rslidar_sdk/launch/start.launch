@@ -1,0 +1,16 @@
+<launch>
+  <node pkg="rslidar_sdk" name="rslidar_sdk_node" type="rslidar_sdk_node" output="screen">
+    <param name="config_path" value=""/>
+  </node>
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_laser_broadcaster"
+      args="0.9 0 1.45 1.57 0 0 base_link rslidar" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_velodyne_broadcaster"
+      args="0.9 0 1.45 1.57 0 0 base_link velodyne" /> -->
+
+  <node pkg="rs_to_velodyne" name="rs_to_velodyne" type="rs_to_velodyne"  args="XYZIRT XYZIRT"   output="screen" />
+        
+   <!-- rviz -->
+  <!-- <node pkg="rviz" name="rviz" type="rviz" args="-d $(find rslidar_sdk)/rviz/rviz.rviz" /> -->
+</launch>
